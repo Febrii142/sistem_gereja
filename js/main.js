@@ -85,12 +85,17 @@ function setActiveMenu() {
     
     navLinks.forEach(function(link) {
         const href = link.getAttribute('href');
-        if (href && currentPath.includes(href.replace('../', '').replace('./', ''))) {
-            link.classList.add('active');
-            // Open parent submenu if exists
-            const parentSubmenu = link.closest('.nav-item.has-submenu');
-            if (parentSubmenu) {
-                parentSubmenu.classList.add('open');
+        if (href) {
+            // Extract filename from href for comparison (UI navigation only)
+            const hrefParts = href.split('/');
+            const hrefFilename = hrefParts[hrefParts.length - 1];
+            if (hrefFilename && currentPath.includes(hrefFilename)) {
+                link.classList.add('active');
+                // Open parent submenu if exists
+                const parentSubmenu = link.closest('.nav-item.has-submenu');
+                if (parentSubmenu) {
+                    parentSubmenu.classList.add('open');
+                }
             }
         }
     });
