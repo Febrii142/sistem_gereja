@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Form Pemasukan - Sistem Pengolahan Data Gereja">
+    <title>Tambah Pemasukan - Sistem Pengolahan Data Gereja</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/logo.svg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay"></div>
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="../../assets/images/logo.svg" alt="Logo" class="sidebar-logo">
+            <div class="sidebar-brand">
+                Sistem Gereja
+                <small>Data Management</small>
+            </div>
+        </div>
+        
+        <nav class="sidebar-menu">
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="../../index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item has-submenu">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>Data Jemaat</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="nav-item">
+                            <a href="../jemaat/list.html" class="nav-link">Daftar Jemaat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../jemaat/form.html" class="nav-link">Tambah Jemaat</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item has-submenu">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Jadwal & Kegiatan</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="nav-item">
+                            <a href="../jadwal/calendar.html" class="nav-link">Kalender</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../jadwal/list.html" class="nav-link">Daftar Jadwal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../jadwal/form.html" class="nav-link">Tambah Jadwal</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item has-submenu open">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-wallet"></i>
+                        <span>Keuangan</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="nav-item">
+                            <a href="dashboard.html" class="nav-link">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="transaksi.html" class="nav-link">Transaksi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="form-pemasukan.html" class="nav-link active">Tambah Pemasukan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="form-pengeluaran.html" class="nav-link">Tambah Pengeluaran</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="laporan.html" class="nav-link">Laporan</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <div class="menu-section">
+                <span class="menu-section-title">Pengaturan</span>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../login.html" class="nav-link">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Keluar</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+            <div class="navbar-left">
+                <button class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="navbar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Cari jemaat, kegiatan, transaksi...">
+                </div>
+            </div>
+            
+            <div class="navbar-right">
+                <button class="navbar-icon-btn" data-bs-toggle="tooltip" title="Notifikasi">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                
+                <div class="dropdown">
+                    <div class="user-dropdown" data-bs-toggle="dropdown">
+                        <div class="user-avatar">A</div>
+                        <div class="user-info d-none d-md-block">
+                            <div class="user-name">Administrator</div>
+                            <div class="user-role">Admin</div>
+                        </div>
+                        <i class="fas fa-chevron-down ms-2 d-none d-md-block"></i>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profil Saya</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Pengaturan</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i class="fas fa-sign-out-alt me-2"></i>Keluar</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb-wrapper" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../../index.html">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="dashboard.html">Keuangan</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Tambah Pemasukan</li>
+                </ol>
+            </nav>
+            
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">
+                    <i class="fas fa-plus-circle text-success me-2"></i>Tambah Pemasukan
+                </h1>
+                <p class="page-subtitle">Catat persembahan dan pemasukan keuangan gereja</p>
+            </div>
+            
+            <!-- Form Card -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        Formulir Pemasukan
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form class="needs-validation" id="pemasukanForm" novalidate>
+                        <!-- Section: Informasi Transaksi -->
+                        <div class="form-section">
+                            <h6 class="form-section-title">
+                                <i class="fas fa-info-circle me-2 text-success"></i>Informasi Transaksi
+                            </h6>
+                            
+                            <div class="row g-3">
+                                <!-- Tanggal -->
+                                <div class="col-md-4">
+                                    <label for="tanggal" class="form-label">
+                                        Tanggal <span class="required">*</span>
+                                    </label>
+                                    <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+                                    <div class="invalid-feedback">Tanggal wajib diisi</div>
+                                </div>
+                                
+                                <!-- Jenis Pemasukan -->
+                                <div class="col-md-4">
+                                    <label for="jenis" class="form-label">
+                                        Jenis Pemasukan <span class="required">*</span>
+                                    </label>
+                                    <select class="form-select" id="jenis" name="jenis" required>
+                                        <option value="">Pilih jenis pemasukan</option>
+                                        <option value="persembahan">Persembahan Umum</option>
+                                        <option value="perpuluhan">Perpuluhan</option>
+                                        <option value="syukur">Persembahan Syukur</option>
+                                        <option value="misi">Persembahan Misi</option>
+                                        <option value="pembangunan">Persembahan Pembangunan</option>
+                                        <option value="diakonia">Dana Diakonia</option>
+                                        <option value="kolekte">Kolekte Khusus</option>
+                                        <option value="lainnya">Lainnya</option>
+                                    </select>
+                                    <div class="invalid-feedback">Jenis pemasukan wajib dipilih</div>
+                                </div>
+                                
+                                <!-- Nominal -->
+                                <div class="col-md-4">
+                                    <label for="nominal" class="form-label">
+                                        Nominal (Rp) <span class="required">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">Rp</span>
+                                        <input type="text" class="form-control" id="nominal" name="nominal" placeholder="0" required>
+                                    </div>
+                                    <div class="invalid-feedback">Nominal wajib diisi</div>
+                                </div>
+                                
+                                <!-- Keterangan -->
+                                <div class="col-12">
+                                    <label for="keterangan" class="form-label">
+                                        Keterangan <span class="required">*</span>
+                                    </label>
+                                    <input type="text" class="form-control" id="keterangan" name="keterangan" placeholder="Contoh: Persembahan Ibadah Minggu 1 Desember 2024" required>
+                                    <div class="invalid-feedback">Keterangan wajib diisi</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Section: Informasi Pemberi -->
+                        <div class="form-section">
+                            <h6 class="form-section-title">
+                                <i class="fas fa-user me-2 text-success"></i>Informasi Pemberi (Opsional)
+                            </h6>
+                            
+                            <div class="row g-3">
+                                <!-- Checkbox Anonim -->
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="is_anonim" name="is_anonim" checked>
+                                        <label class="form-check-label" for="is_anonim">
+                                            Anonim (tidak mencantumkan nama pemberi)
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <!-- Nama Pemberi -->
+                                <div class="col-md-6" id="pemberiFields" style="display: none;">
+                                    <label for="nama_pemberi" class="form-label">Nama Pemberi</label>
+                                    <input type="text" class="form-control" id="nama_pemberi" name="nama_pemberi" placeholder="Nama pemberi persembahan">
+                                </div>
+                                
+                                <!-- Telepon Pemberi -->
+                                <div class="col-md-6" id="pemberiTelp" style="display: none;">
+                                    <label for="telepon_pemberi" class="form-label">No. Telepon</label>
+                                    <input type="tel" class="form-control" id="telepon_pemberi" name="telepon_pemberi" placeholder="Nomor telepon (opsional)">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Section: Bukti Transaksi -->
+                        <div class="form-section">
+                            <h6 class="form-section-title">
+                                <i class="fas fa-file-alt me-2 text-success"></i>Bukti Transaksi (Opsional)
+                            </h6>
+                            
+                            <div class="row g-3">
+                                <!-- Upload Bukti -->
+                                <div class="col-12">
+                                    <label class="form-label">Upload Bukti/Kwitansi</label>
+                                    <div class="file-upload" onclick="document.getElementById('bukti').click()">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p class="upload-text">Klik untuk upload bukti transaksi</p>
+                                        <p class="upload-hint">Format: JPG, PNG, PDF. Maksimal 5MB</p>
+                                        <input type="file" id="bukti" name="bukti" accept="image/*,.pdf" hidden>
+                                    </div>
+                                </div>
+                                
+                                <!-- Catatan -->
+                                <div class="col-12">
+                                    <label for="catatan" class="form-label">Catatan Tambahan</label>
+                                    <textarea class="form-control" id="catatan" name="catatan" rows="3" placeholder="Catatan tambahan (opsional)"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Summary -->
+                        <div class="alert alert-success mb-4">
+                            <div class="d-flex align-items-center gap-3">
+                                <i class="fas fa-info-circle fa-2x"></i>
+                                <div>
+                                    <strong>Ringkasan Transaksi</strong>
+                                    <p class="mb-0" id="summary">
+                                        Pemasukan sebesar <strong>Rp 0</strong> akan dicatat pada tanggal <strong id="summaryDate">-</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Form Actions -->
+                        <div class="d-flex justify-content-end gap-2 pt-3 border-top">
+                            <a href="transaksi.html" class="btn btn-light">
+                                <i class="fas fa-times me-1"></i>Batal
+                            </a>
+                            <button type="reset" class="btn btn-outline-success">
+                                <i class="fas fa-redo me-1"></i>Reset
+                            </button>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save me-1"></i>Simpan Pemasukan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/main.js"></script>
+    
+    <!-- Form Specific Script -->
+    <script>
+        // Set default date to today
+        document.getElementById('tanggal').valueAsDate = new Date();
+        
+        // Toggle pemberi fields
+        document.getElementById('is_anonim').addEventListener('change', function() {
+            const pemberiFields = document.getElementById('pemberiFields');
+            const pemberiTelp = document.getElementById('pemberiTelp');
+            pemberiFields.style.display = this.checked ? 'none' : 'block';
+            pemberiTelp.style.display = this.checked ? 'none' : 'block';
+        });
+        
+        // Format currency input
+        document.getElementById('nominal').addEventListener('input', function(e) {
+            let value = this.value.replace(/\D/g, '');
+            this.value = new Intl.NumberFormat('id-ID').format(value);
+            updateSummary();
+        });
+        
+        // Update summary
+        function updateSummary() {
+            const nominal = document.getElementById('nominal').value || '0';
+            const tanggal = document.getElementById('tanggal').value;
+            
+            const formattedDate = tanggal ? new Date(tanggal).toLocaleDateString('id-ID', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            }) : '-';
+            
+            document.querySelector('#summary strong').textContent = 'Rp ' + nominal;
+            document.getElementById('summaryDate').textContent = formattedDate;
+        }
+        
+        document.getElementById('tanggal').addEventListener('change', updateSummary);
+        
+        // Initial summary update
+        updateSummary();
+        
+        // Preview uploaded file
+        document.getElementById('bukti').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const preview = document.querySelector('.file-upload');
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        preview.innerHTML = `
+                            <img src="${e.target.result}" alt="Preview" style="max-width: 200px; max-height: 150px; border-radius: 8px;">
+                            <p class="upload-text mt-2">${file.name}</p>
+                            <p class="upload-hint">Klik untuk ganti file</p>
+                        `;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.innerHTML = `
+                        <i class="fas fa-file-pdf fa-3x text-danger"></i>
+                        <p class="upload-text mt-2">${file.name}</p>
+                        <p class="upload-hint">Klik untuk ganti file</p>
+                    `;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
