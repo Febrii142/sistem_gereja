@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Daftar Transaksi - Sistem Pengolahan Data Gereja">
+    <title>Daftar Transaksi - Sistem Pengolahan Data Gereja</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/logo.svg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay"></div>
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="../../assets/images/logo.svg" alt="Logo" class="sidebar-logo">
+            <div class="sidebar-brand">
+                Sistem Gereja
+                <small>Data Management</small>
+            </div>
+        </div>
+        
+        <nav class="sidebar-menu">
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="../../index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item has-submenu">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>Data Jemaat</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="nav-item">
+                            <a href="../jemaat/list.html" class="nav-link">Daftar Jemaat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../jemaat/form.html" class="nav-link">Tambah Jemaat</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item has-submenu">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Jadwal & Kegiatan</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="nav-item">
+                            <a href="../jadwal/calendar.html" class="nav-link">Kalender</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../jadwal/list.html" class="nav-link">Daftar Jadwal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../jadwal/form.html" class="nav-link">Tambah Jadwal</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item has-submenu open">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-wallet"></i>
+                        <span>Keuangan</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="nav-item">
+                            <a href="dashboard.html" class="nav-link">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="transaksi.html" class="nav-link active">Transaksi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="form-pemasukan.html" class="nav-link">Tambah Pemasukan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="form-pengeluaran.html" class="nav-link">Tambah Pengeluaran</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="laporan.html" class="nav-link">Laporan</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <div class="menu-section">
+                <span class="menu-section-title">Pengaturan</span>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../login.html" class="nav-link">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Keluar</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+            <div class="navbar-left">
+                <button class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="navbar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Cari jemaat, kegiatan, transaksi...">
+                </div>
+            </div>
+            
+            <div class="navbar-right">
+                <button class="navbar-icon-btn" data-bs-toggle="tooltip" title="Notifikasi">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                
+                <div class="dropdown">
+                    <div class="user-dropdown" data-bs-toggle="dropdown">
+                        <div class="user-avatar">A</div>
+                        <div class="user-info d-none d-md-block">
+                            <div class="user-name">Administrator</div>
+                            <div class="user-role">Admin</div>
+                        </div>
+                        <i class="fas fa-chevron-down ms-2 d-none d-md-block"></i>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profil Saya</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Pengaturan</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i class="fas fa-sign-out-alt me-2"></i>Keluar</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb-wrapper" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../../index.html">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="dashboard.html">Keuangan</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Daftar Transaksi</li>
+                </ol>
+            </nav>
+            
+            <!-- Page Header -->
+            <div class="page-header d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <div>
+                    <h1 class="page-title">Daftar Transaksi</h1>
+                    <p class="page-subtitle">Riwayat semua transaksi keuangan gereja</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="form-pemasukan.html" class="btn btn-success">
+                        <i class="fas fa-plus me-1"></i>Pemasukan
+                    </a>
+                    <a href="form-pengeluaran.html" class="btn btn-danger">
+                        <i class="fas fa-minus me-1"></i>Pengeluaran
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Summary Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-6 col-md-3">
+                    <div class="stats-card">
+                        <div class="card-icon primary">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <p class="card-label">Total Transaksi</p>
+                        <h3 class="card-value">248</h3>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stats-card">
+                        <div class="card-icon secondary">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <p class="card-label">Pemasukan</p>
+                        <h3 class="card-value">156</h3>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stats-card">
+                        <div class="card-icon danger">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <p class="card-label">Pengeluaran</p>
+                        <h3 class="card-value">92</h3>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stats-card">
+                        <div class="card-icon info">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <p class="card-label">Bulan Ini</p>
+                        <h3 class="card-value">32</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Data Table Card -->
+            <div class="content-card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <i class="fas fa-list"></i>
+                        Riwayat Transaksi
+                    </h5>
+                    <button class="btn btn-outline-primary btn-sm">
+                        <i class="fas fa-download me-1"></i>Export Excel
+                    </button>
+                </div>
+                <div class="card-body">
+                    <!-- Table Controls -->
+                    <div class="table-controls">
+                        <div class="table-search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Cari transaksi..." id="searchInput">
+                        </div>
+                        <div class="table-filters">
+                            <select class="form-select form-select-sm" style="width: auto;">
+                                <option value="">Semua Jenis</option>
+                                <option value="pemasukan">Pemasukan</option>
+                                <option value="pengeluaran">Pengeluaran</option>
+                            </select>
+                            <select class="form-select form-select-sm" style="width: auto;">
+                                <option value="">Semua Kategori</option>
+                                <option value="persembahan">Persembahan</option>
+                                <option value="perpuluhan">Perpuluhan</option>
+                                <option value="syukur">Syukur</option>
+                                <option value="misi">Misi</option>
+                                <option value="pembangunan">Pembangunan</option>
+                                <option value="gaji">Gaji & Honor</option>
+                                <option value="utilitas">Utilitas</option>
+                                <option value="operasional">Operasional</option>
+                            </select>
+                            <input type="month" class="form-control form-control-sm" style="width: auto;" value="2024-12">
+                        </div>
+                    </div>
+                    
+                    <!-- Data Table -->
+                    <div class="table-wrapper">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th data-sort="tanggal">Tanggal</th>
+                                    <th data-sort="keterangan">Keterangan</th>
+                                    <th>Kategori</th>
+                                    <th>Jenis</th>
+                                    <th>Pemberi/Penerima</th>
+                                    <th class="text-end" data-sort="nominal">Nominal</th>
+                                    <th class="text-center">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-id="1">
+                                    <td>01/12/2024</td>
+                                    <td><strong>Persembahan Ibadah Minggu</strong></td>
+                                    <td><span class="badge badge-primary">Persembahan</span></td>
+                                    <td><span class="badge badge-success">Pemasukan</span></td>
+                                    <td><span class="text-muted">-</span></td>
+                                    <td class="text-end text-success fw-bold">+ Rp 8.500.000</td>
+                                    <td class="actions-cell text-center">
+                                        <a href="form-pemasukan.html?id=1" class="btn btn-sm btn-light" data-bs-toggle="tooltip" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button class="btn btn-sm btn-light text-danger" data-delete="1" data-name="Persembahan Ibadah Minggu" data-bs-toggle="tooltip" title="Hapus">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr data-id="2">
+                                    <td>01/12/2024</td>
+                                    <td><strong>Perpuluhan Bpk. Sutanto</strong></td>
+                                    <td><span class="badge badge-info">Perpuluhan</span></td>
+                                    <td><span class="badge badge-success">Pemasukan</span></td>
+                                    <td>Bpk. Sutanto</td>
+                                    <td class="text-end text-success fw-bold">+ Rp 1.500.000</td>
+                                    <td class="actions-cell text-center">
+                                        <a href="form-pemasukan.html?id=2" class="btn btn-sm btn-light" data-bs-toggle="tooltip" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button class="btn btn-sm btn-light text-danger" data-delete="2" data-name="Perpuluhan Bpk. Sutanto" data-bs-toggle="tooltip" title="Hapus">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr data-id="3">
+                                    <td>30/11/2024</td>
+                                    <td><strong>Pembayaran Listrik November</strong></td>
+                                    <td><span class="badge badge-warning">Utilitas</span></td>
+                                    <td><span class="badge badge-danger">Pengeluaran</span></td>
+                                    <td>PLN</td>
+                                    <td class="text-end text-danger fw-bold">- Rp 2.350.000</td>
+                                    <td class="actions-cell text-center">
+                                        <a href="form-pengeluaran.html?id=3" class="btn btn-sm btn-light" data-bs-toggle="tooltip" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button class="btn btn-sm btn-light text-danger" data-delete="3" data-name="Pembayaran Listrik" data-bs-toggle="tooltip" title="Hapus">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr data-id="4">
+                                    <td>28/11/2024</td>
+                                    <td><strong>Persembahan Misi November</strong></td>
+                                    <td><span class="badge" style="background-color: rgba(155, 89, 182, 0.15); color: #9B59B6;">Misi</span></td>
+                                    <td><span class="badge badge-success">Pemasukan</span></td>
+                                    <td><span class="text-muted">-</span></td>
+                                    <td class="text-end text-success fw-bold">+ Rp 3.200.000</td>
+                                    <td class="actions-cell text-center">
+                                        <a href="form-pemasukan.html?id=4" class="btn btn-sm btn-light" data-bs-toggle="tooltip" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button class="btn btn-sm btn-light text-danger" data-delete="4" data-name="Persembahan Misi" data-bs-toggle="tooltip" title="Hapus">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr data-id="5">
+                                    <td>27/11/2024</td>
+                                    <td><strong>Honor Pelayan Minggu</strong></td>
+                                    <td><span class="badge badge-secondary">Gaji & Honor</span></td>
+                                    <td><span class="badge badge-danger">Pengeluaran</span></td>
+                                    <td>Tim Pelayan</td>
+                                    <td class="text-end text-danger fw-bold">- Rp 5.000.000</td>
+                                    <td class="actions-cell text-center">
+                                        <a href="form-pengeluaran.html?id=5" class="btn btn-sm btn-light" data-bs-toggle="tooltip" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button class="btn btn-sm btn-light text-danger" data-delete="5" data-name="Honor Pelayan" data-bs-toggle="tooltip" title="Hapus">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr data-id="6">
+                                    <td>25/11/2024</td>
+                                    <td><strong>Persembahan Syukur Ibu Ratna</strong></td>
+                                    <td><span class="badge badge-secondary">Syukur</span></td>
+                                    <td><span class="badge badge-success">Pemasukan</span></td>
+                                    <td>Ibu Ratna</td>
+                                    <td class="text-end text-success fw-bold">+ Rp 2.000.000</td>
+                                    <td class="actions-cell text-center">
+                                        <a href="form-pemasukan.html?id=6" class="btn btn-sm btn-light" data-bs-toggle="tooltip" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button class="btn btn-sm btn-light text-danger" data-delete="6" data-name="Persembahan Syukur" data-bs-toggle="tooltip" title="Hapus">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr data-id="7">
+                                    <td>24/11/2024</td>
+                                    <td><strong>Persembahan Ibadah Minggu</strong></td>
+                                    <td><span class="badge badge-primary">Persembahan</span></td>
+                                    <td><span class="badge badge-success">Pemasukan</span></td>
+                                    <td><span class="text-muted">-</span></td>
+                                    <td class="text-end text-success fw-bold">+ Rp 7.850.000</td>
+                                    <td class="actions-cell text-center">
+                                        <a href="form-pemasukan.html?id=7" class="btn btn-sm btn-light" data-bs-toggle="tooltip" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button class="btn btn-sm btn-light text-danger" data-delete="7" data-name="Persembahan Ibadah Minggu" data-bs-toggle="tooltip" title="Hapus">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr data-id="8">
+                                    <td>24/11/2024</td>
+                                    <td><strong>Pembelian ATK Kantor</strong></td>
+                                    <td><span class="badge badge-info">Operasional</span></td>
+                                    <td><span class="badge badge-danger">Pengeluaran</span></td>
+                                    <td>Toko Alat Tulis</td>
+                                    <td class="text-end text-danger fw-bold">- Rp 450.000</td>
+                                    <td class="actions-cell text-center">
+                                        <a href="form-pengeluaran.html?id=8" class="btn btn-sm btn-light" data-bs-toggle="tooltip" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button class="btn btn-sm btn-light text-danger" data-delete="8" data-name="Pembelian ATK" data-bs-toggle="tooltip" title="Hapus">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr data-id="9">
+                                    <td>22/11/2024</td>
+                                    <td><strong>Persembahan Pembangunan</strong></td>
+                                    <td><span class="badge" style="background-color: rgba(231, 76, 60, 0.15); color: #E74C3C;">Pembangunan</span></td>
+                                    <td><span class="badge badge-success">Pemasukan</span></td>
+                                    <td><span class="text-muted">-</span></td>
+                                    <td class="text-end text-success fw-bold">+ Rp 5.500.000</td>
+                                    <td class="actions-cell text-center">
+                                        <a href="form-pemasukan.html?id=9" class="btn btn-sm btn-light" data-bs-toggle="tooltip" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button class="btn btn-sm btn-light text-danger" data-delete="9" data-name="Persembahan Pembangunan" data-bs-toggle="tooltip" title="Hapus">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr data-id="10">
+                                    <td>20/11/2024</td>
+                                    <td><strong>Bantuan Diakonia Keluarga Yanto</strong></td>
+                                    <td><span class="badge" style="background-color: rgba(46, 204, 113, 0.15); color: #27AE60;">Diakonia</span></td>
+                                    <td><span class="badge badge-danger">Pengeluaran</span></td>
+                                    <td>Keluarga Yanto</td>
+                                    <td class="text-end text-danger fw-bold">- Rp 1.500.000</td>
+                                    <td class="actions-cell text-center">
+                                        <a href="form-pengeluaran.html?id=10" class="btn btn-sm btn-light" data-bs-toggle="tooltip" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button class="btn btn-sm btn-light text-danger" data-delete="10" data-name="Bantuan Diakonia" data-bs-toggle="tooltip" title="Hapus">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="pagination-wrapper">
+                        <div class="pagination-info">
+                            Menampilkan 1-10 dari 248 transaksi
+                        </div>
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination pagination-sm mb-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">...</a></li>
+                                <li class="page-item"><a class="page-link" href="#">25</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistem Pengolahan Data Gereja - Login">
+    <title>Login - Sistem Pengolahan Data Gereja</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../assets/images/logo.svg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="login-page">
+    
+    <div class="login-container">
+        <!-- Logo Section -->
+        <div class="login-logo">
+            <img src="../assets/images/logo.svg" alt="Logo Gereja">
+            <h1>Sistem Gereja</h1>
+            <p>Sistem Pengolahan Data Gereja</p>
+        </div>
+        
+        <!-- Login Form -->
+        <form class="login-form" id="loginForm">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="username" placeholder="Username" required>
+                <label for="username"><i class="fas fa-user me-2"></i>Username</label>
+            </div>
+            
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="password" placeholder="Password" required>
+                <label for="password"><i class="fas fa-lock me-2"></i>Password</label>
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                    <label class="form-check-label" for="rememberMe">
+                        Ingat saya
+                    </label>
+                </div>
+                <a href="#" class="text-decoration-none small">Lupa password?</a>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-sign-in-alt me-2"></i>Masuk
+            </button>
+        </form>
+        
+        <!-- Demo Credentials Info -->
+        <div class="alert alert-info mt-4" role="alert">
+            <i class="fas fa-info-circle me-2"></i>
+            <strong>Demo Login:</strong><br>
+            Username: <code>admin</code><br>
+            Password: <code>admin123</code>
+        </div>
+        
+        <!-- Footer -->
+        <div class="login-footer">
+            <p>&copy; 2024 Sistem Pengolahan Data Gereja</p>
+            <p>Versi 1.0.0</p>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Login Script -->
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Demo validation
+            if (username === 'admin' && password === 'admin123') {
+                // Show loading
+                const btn = this.querySelector('button[type="submit"]');
+                btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Memproses...';
+                btn.disabled = true;
+                
+                // Redirect to dashboard
+                setTimeout(function() {
+                    window.location.href = '../index.html';
+                }, 1500);
+            } else {
+                // Show error
+                alert('Username atau password salah!\n\nGunakan:\nUsername: admin\nPassword: admin123');
+            }
+        });
+    </script>
+</body>
+</html>

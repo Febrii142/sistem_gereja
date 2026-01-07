@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detail Jemaat - Sistem Pengolahan Data Gereja">
+    <title>Detail Jemaat - Sistem Pengolahan Data Gereja</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/logo.svg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay"></div>
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <img src="../../assets/images/logo.svg" alt="Logo" class="sidebar-logo">
+            <div class="sidebar-brand">
+                Sistem Gereja
+                <small>Data Management</small>
+            </div>
+        </div>
+        
+        <nav class="sidebar-menu">
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="../../index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item has-submenu open">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>Data Jemaat</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="nav-item">
+                            <a href="list.html" class="nav-link active">Daftar Jemaat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="form.html" class="nav-link">Tambah Jemaat</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item has-submenu">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Jadwal & Kegiatan</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="nav-item">
+                            <a href="../jadwal/calendar.html" class="nav-link">Kalender</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../jadwal/list.html" class="nav-link">Daftar Jadwal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../jadwal/form.html" class="nav-link">Tambah Jadwal</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item has-submenu">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-wallet"></i>
+                        <span>Keuangan</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="nav-item">
+                            <a href="../keuangan/dashboard.html" class="nav-link">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../keuangan/transaksi.html" class="nav-link">Transaksi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../keuangan/form-pemasukan.html" class="nav-link">Tambah Pemasukan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../keuangan/form-pengeluaran.html" class="nav-link">Tambah Pengeluaran</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../keuangan/laporan.html" class="nav-link">Laporan</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <div class="menu-section">
+                <span class="menu-section-title">Pengaturan</span>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../login.html" class="nav-link">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Keluar</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar">
+            <div class="navbar-left">
+                <button class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="navbar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Cari jemaat, kegiatan, transaksi...">
+                </div>
+            </div>
+            
+            <div class="navbar-right">
+                <button class="navbar-icon-btn" data-bs-toggle="tooltip" title="Notifikasi">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                
+                <div class="dropdown">
+                    <div class="user-dropdown" data-bs-toggle="dropdown">
+                        <div class="user-avatar">A</div>
+                        <div class="user-info d-none d-md-block">
+                            <div class="user-name">Administrator</div>
+                            <div class="user-role">Admin</div>
+                        </div>
+                        <i class="fas fa-chevron-down ms-2 d-none d-md-block"></i>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profil Saya</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Pengaturan</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i class="fas fa-sign-out-alt me-2"></i>Keluar</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb-wrapper" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../../index.html">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="list.html">Data Jemaat</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Detail Jemaat</li>
+                </ol>
+            </nav>
+            
+            <!-- Page Header with Actions -->
+            <div class="page-header d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+                <div>
+                    <h1 class="page-title">Detail Jemaat</h1>
+                    <p class="page-subtitle">Informasi lengkap data jemaat</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="list.html" class="btn btn-light">
+                        <i class="fas fa-arrow-left me-1"></i>Kembali
+                    </a>
+                    <a href="form.html?id=1" class="btn btn-primary">
+                        <i class="fas fa-edit me-1"></i>Edit Data
+                    </a>
+                    <button class="btn btn-outline-danger" data-delete="1" data-name="Budi Santoso">
+                        <i class="fas fa-trash me-1"></i>Hapus
+                    </button>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <!-- Profile Card -->
+                <div class="col-lg-4">
+                    <div class="content-card">
+                        <div class="profile-header">
+                            <div class="user-avatar" style="width: 100px; height: 100px; font-size: 2.5rem; margin: 0 auto 1rem; background-color: #4A90E2;">BS</div>
+                            <h4 class="profile-name">Budi Santoso</h4>
+                            <p class="profile-role">
+                                <span class="status-badge aktif">Aktif</span>
+                            </p>
+                        </div>
+                        <div class="profile-content">
+                            <div class="profile-section">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="text-muted"><i class="fas fa-id-card me-2"></i>NIJ</span>
+                                    <strong>NIJ-2024-001</strong>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="text-muted"><i class="fas fa-phone me-2"></i>Telepon</span>
+                                    <strong>081234567890</strong>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="text-muted"><i class="fas fa-envelope me-2"></i>Email</span>
+                                    <strong>budi.santoso@email.com</strong>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <span class="text-muted"><i class="fas fa-users me-2"></i>Kelompok</span>
+                                    <strong>Dewasa</strong>
+                                </div>
+                            </div>
+                            
+                            <!-- Quick Stats -->
+                            <div class="profile-section">
+                                <h6 class="profile-section-title">Statistik Kehadiran</h6>
+                                <div class="row text-center g-3">
+                                    <div class="col-4">
+                                        <div class="h4 mb-1 text-primary">48</div>
+                                        <small class="text-muted">Ibadah</small>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="h4 mb-1 text-success">12</div>
+                                        <small class="text-muted">Kegiatan</small>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="h4 mb-1 text-warning">92%</div>
+                                        <small class="text-muted">Kehadiran</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Detail Info -->
+                <div class="col-lg-8">
+                    <!-- Tabs Navigation -->
+                    <ul class="nav nav-tabs nav-tabs-custom mb-4" role="tablist">
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-info">
+                                <i class="fas fa-user me-2"></i>Informasi Pribadi
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-gereja">
+                                <i class="fas fa-church me-2"></i>Data Gereja
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-kehadiran">
+                                <i class="fas fa-calendar-check me-2"></i>Riwayat Kehadiran
+                            </button>
+                        </li>
+                    </ul>
+                    
+                    <!-- Tab Content -->
+                    <div class="tab-content">
+                        <!-- Tab: Informasi Pribadi -->
+                        <div class="tab-pane fade show active" id="tab-info">
+                            <div class="content-card">
+                                <div class="card-header">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-info-circle"></i>
+                                        Informasi Pribadi
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="profile-info-grid">
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">Nama Lengkap</span>
+                                            <span class="profile-info-value">Budi Santoso</span>
+                                        </div>
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">NIJ</span>
+                                            <span class="profile-info-value">NIJ-2024-001</span>
+                                        </div>
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">Tempat, Tanggal Lahir</span>
+                                            <span class="profile-info-value">Jakarta, 15 Maret 1985</span>
+                                        </div>
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">Jenis Kelamin</span>
+                                            <span class="profile-info-value"><i class="fas fa-mars text-primary me-1"></i>Laki-laki</span>
+                                        </div>
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">Status Pernikahan</span>
+                                            <span class="profile-info-value">Menikah</span>
+                                        </div>
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">Pekerjaan</span>
+                                            <span class="profile-info-value">Pegawai Swasta</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <hr class="my-4">
+                                    
+                                    <h6 class="mb-3"><i class="fas fa-map-marker-alt me-2 text-primary"></i>Alamat & Kontak</h6>
+                                    <div class="profile-info-grid">
+                                        <div class="profile-info-item" style="grid-column: span 2;">
+                                            <span class="profile-info-label">Alamat Lengkap</span>
+                                            <span class="profile-info-value">Jl. Merdeka No. 123, RT 05/RW 02, Kel. Menteng, Kec. Menteng</span>
+                                        </div>
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">Kota/Kabupaten</span>
+                                            <span class="profile-info-value">Jakarta Pusat</span>
+                                        </div>
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">Provinsi</span>
+                                            <span class="profile-info-value">DKI Jakarta</span>
+                                        </div>
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">Kode Pos</span>
+                                            <span class="profile-info-value">10310</span>
+                                        </div>
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">No. Telepon</span>
+                                            <span class="profile-info-value">
+                                                <a href="tel:081234567890">081234567890</a>
+                                            </span>
+                                        </div>
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">Email</span>
+                                            <span class="profile-info-value">
+                                                <a href="mailto:budi.santoso@email.com">budi.santoso@email.com</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab: Data Gereja -->
+                        <div class="tab-pane fade" id="tab-gereja">
+                            <div class="content-card">
+                                <div class="card-header">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-church"></i>
+                                        Data Keanggotaan Gereja
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="profile-info-grid">
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">Tanggal Bergabung</span>
+                                            <span class="profile-info-value">1 Januari 2020</span>
+                                        </div>
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">Tanggal Baptis</span>
+                                            <span class="profile-info-value">15 Maret 2010</span>
+                                        </div>
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">Status Keanggotaan</span>
+                                            <span class="profile-info-value">
+                                                <span class="status-badge aktif">Aktif</span>
+                                            </span>
+                                        </div>
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">Kelompok/Komisi</span>
+                                            <span class="profile-info-value">Dewasa</span>
+                                        </div>
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">Pelayanan</span>
+                                            <span class="profile-info-value">Tim Multimedia</span>
+                                        </div>
+                                        <div class="profile-info-item">
+                                            <span class="profile-info-label">Lama Bergabung</span>
+                                            <span class="profile-info-value">4 tahun, 11 bulan</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <hr class="my-4">
+                                    
+                                    <h6 class="mb-3"><i class="fas fa-sticky-note me-2 text-primary"></i>Catatan</h6>
+                                    <div class="alert alert-light mb-0">
+                                        <p class="mb-0">Jemaat yang aktif dan rajin mengikuti pelayanan multimedia. Memiliki keahlian dalam bidang teknologi dan audio visual.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tab: Riwayat Kehadiran -->
+                        <div class="tab-pane fade" id="tab-kehadiran">
+                            <div class="content-card">
+                                <div class="card-header">
+                                    <h5 class="card-title">
+                                        <i class="fas fa-calendar-check"></i>
+                                        Riwayat Kehadiran Ibadah
+                                    </h5>
+                                    <div class="dropdown">
+                                        <button class="btn btn-light btn-sm dropdown-toggle" data-bs-toggle="dropdown">
+                                            <i class="fas fa-filter me-1"></i>Bulan Ini
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-end">
+                                            <li><a class="dropdown-item" href="#">Bulan Ini</a></li>
+                                            <li><a class="dropdown-item" href="#">3 Bulan Terakhir</a></li>
+                                            <li><a class="dropdown-item" href="#">6 Bulan Terakhir</a></li>
+                                            <li><a class="dropdown-item" href="#">Tahun Ini</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="table-wrapper">
+                                        <table class="data-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Tanggal</th>
+                                                    <th>Kegiatan</th>
+                                                    <th>Waktu</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>01 Des 2024</td>
+                                                    <td>Ibadah Minggu</td>
+                                                    <td>08:00 - 10:00</td>
+                                                    <td><span class="badge badge-success">Hadir</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>28 Nov 2024</td>
+                                                    <td>Persekutuan Doa</td>
+                                                    <td>18:00 - 20:00</td>
+                                                    <td><span class="badge badge-success">Hadir</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>24 Nov 2024</td>
+                                                    <td>Ibadah Minggu</td>
+                                                    <td>08:00 - 10:00</td>
+                                                    <td><span class="badge badge-success">Hadir</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>21 Nov 2024</td>
+                                                    <td>Rapat Pelayanan</td>
+                                                    <td>19:00 - 21:00</td>
+                                                    <td><span class="badge badge-success">Hadir</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>17 Nov 2024</td>
+                                                    <td>Ibadah Minggu</td>
+                                                    <td>08:00 - 10:00</td>
+                                                    <td><span class="badge badge-danger">Tidak Hadir</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>14 Nov 2024</td>
+                                                    <td>Persekutuan Doa</td>
+                                                    <td>18:00 - 20:00</td>
+                                                    <td><span class="badge badge-success">Hadir</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>10 Nov 2024</td>
+                                                    <td>Ibadah Minggu</td>
+                                                    <td>08:00 - 10:00</td>
+                                                    <td><span class="badge badge-success">Hadir</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>03 Nov 2024</td>
+                                                    <td>Ibadah Minggu</td>
+                                                    <td>08:00 - 10:00</td>
+                                                    <td><span class="badge badge-success">Hadir</span></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="card-footer text-center">
+                                    <a href="#" class="btn btn-outline-primary btn-sm">
+                                        <i class="fas fa-history me-1"></i>Lihat Semua Riwayat
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/main.js"></script>
+</body>
+</html>

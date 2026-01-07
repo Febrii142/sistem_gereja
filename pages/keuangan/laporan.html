@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Laporan Keuangan - Sistem Pengolahan Data Gereja">
+    <title>Laporan Keuangan - Sistem Pengolahan Data Gereja</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="../../assets/images/logo.svg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/style.css">
+    
+    <style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            
+            .print-only {
+                display: block !important;
+            }
+            
+            body {
+                background: white;
+            }
+            
+            .main-content {
+                margin-left: 0 !important;
+            }
+            
+            .page-content {
+                padding: 0;
+            }
+            
+            .content-card {
+                box-shadow: none;
+                border: none;
+            }
+        }
+        
+        .print-only {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay no-print"></div>
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar no-print">
+        <div class="sidebar-header">
+            <img src="../../assets/images/logo.svg" alt="Logo" class="sidebar-logo">
+            <div class="sidebar-brand">
+                Sistem Gereja
+                <small>Data Management</small>
+            </div>
+        </div>
+        
+        <nav class="sidebar-menu">
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="../../index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                
+                <li class="nav-item has-submenu">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>Data Jemaat</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="nav-item">
+                            <a href="../jemaat/list.html" class="nav-link">Daftar Jemaat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../jemaat/form.html" class="nav-link">Tambah Jemaat</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item has-submenu">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Jadwal & Kegiatan</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="nav-item">
+                            <a href="../jadwal/calendar.html" class="nav-link">Kalender</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../jadwal/list.html" class="nav-link">Daftar Jadwal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../jadwal/form.html" class="nav-link">Tambah Jadwal</a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item has-submenu open">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-wallet"></i>
+                        <span>Keuangan</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="nav-item">
+                            <a href="dashboard.html" class="nav-link">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="transaksi.html" class="nav-link">Transaksi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="form-pemasukan.html" class="nav-link">Tambah Pemasukan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="form-pengeluaran.html" class="nav-link">Tambah Pengeluaran</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="laporan.html" class="nav-link active">Laporan</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <div class="menu-section">
+                <span class="menu-section-title">Pengaturan</span>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Pengaturan</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../login.html" class="nav-link">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Keluar</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Navbar -->
+        <header class="top-navbar no-print">
+            <div class="navbar-left">
+                <button class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="navbar-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Cari jemaat, kegiatan, transaksi...">
+                </div>
+            </div>
+            
+            <div class="navbar-right">
+                <button class="navbar-icon-btn" data-bs-toggle="tooltip" title="Notifikasi">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </button>
+                
+                <div class="dropdown">
+                    <div class="user-dropdown" data-bs-toggle="dropdown">
+                        <div class="user-avatar">A</div>
+                        <div class="user-info d-none d-md-block">
+                            <div class="user-name">Administrator</div>
+                            <div class="user-role">Admin</div>
+                        </div>
+                        <i class="fas fa-chevron-down ms-2 d-none d-md-block"></i>
+                    </div>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profil Saya</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Pengaturan</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger" href="../login.html"><i class="fas fa-sign-out-alt me-2"></i>Keluar</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb-wrapper no-print" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../../index.html">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="dashboard.html">Keuangan</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Laporan</li>
+                </ol>
+            </nav>
+            
+            <!-- Page Header -->
+            <div class="page-header d-flex justify-content-between align-items-center flex-wrap gap-3 no-print">
+                <div>
+                    <h1 class="page-title">Laporan Keuangan</h1>
+                    <p class="page-subtitle">Laporan pemasukan dan pengeluaran gereja</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary" onclick="window.print()">
+                        <i class="fas fa-print me-1"></i>Cetak
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-file-pdf me-1"></i>Export PDF
+                    </button>
+                    <button class="btn btn-success">
+                        <i class="fas fa-file-excel me-1"></i>Export Excel
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Filter Controls -->
+            <div class="content-card mb-4 no-print">
+                <div class="card-body">
+                    <div class="row g-3 align-items-end">
+                        <div class="col-md-3">
+                            <label class="form-label">Jenis Laporan</label>
+                            <select class="form-select" id="jenisLaporan">
+                                <option value="bulanan" selected>Laporan Bulanan</option>
+                                <option value="tahunan">Laporan Tahunan</option>
+                                <option value="custom">Periode Custom</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Bulan</label>
+                            <input type="month" class="form-control" id="bulanLaporan" value="2024-12">
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Kategori</label>
+                            <select class="form-select" id="kategoriLaporan">
+                                <option value="">Semua Kategori</option>
+                                <option value="pemasukan">Pemasukan Saja</option>
+                                <option value="pengeluaran">Pengeluaran Saja</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary w-100">
+                                <i class="fas fa-sync me-1"></i>Generate Laporan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Report Content -->
+            <div class="content-card">
+                <!-- Report Header (For Print) -->
+                <div class="report-header">
+                    <img src="../../assets/images/logo.svg" alt="Logo" class="report-logo">
+                    <h2 class="report-title">GEREJA KRISTUS INDONESIA</h2>
+                    <p class="report-subtitle">Jl. Merdeka No. 123, Jakarta Pusat</p>
+                    <hr>
+                    <h3>LAPORAN KEUANGAN</h3>
+                    <p class="report-period">Periode: Desember 2024</p>
+                </div>
+                
+                <!-- Summary Section -->
+                <div class="card-body">
+                    <div class="report-summary">
+                        <div class="report-summary-item">
+                            <div class="report-summary-label">Total Pemasukan</div>
+                            <div class="report-summary-value text-success">Rp 58.400.000</div>
+                        </div>
+                        <div class="report-summary-item">
+                            <div class="report-summary-label">Total Pengeluaran</div>
+                            <div class="report-summary-value text-danger">Rp 40.200.000</div>
+                        </div>
+                        <div class="report-summary-item">
+                            <div class="report-summary-label">Saldo</div>
+                            <div class="report-summary-value text-primary">Rp 18.200.000</div>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <!-- Income Detail -->
+                    <h5 class="mb-3"><i class="fas fa-arrow-up text-success me-2"></i>Rincian Pemasukan</h5>
+                    <div class="table-wrapper mb-4">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Tanggal</th>
+                                    <th>Keterangan</th>
+                                    <th>Kategori</th>
+                                    <th class="text-end">Nominal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>01/12/2024</td>
+                                    <td>Persembahan Ibadah Minggu</td>
+                                    <td>Persembahan</td>
+                                    <td class="text-end">Rp 8.500.000</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>01/12/2024</td>
+                                    <td>Perpuluhan Bpk. Sutanto</td>
+                                    <td>Perpuluhan</td>
+                                    <td class="text-end">Rp 1.500.000</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>08/12/2024</td>
+                                    <td>Persembahan Ibadah Minggu</td>
+                                    <td>Persembahan</td>
+                                    <td class="text-end">Rp 9.200.000</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>08/12/2024</td>
+                                    <td>Persembahan Syukur Keluarga Wijaya</td>
+                                    <td>Syukur</td>
+                                    <td class="text-end">Rp 5.000.000</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>10/12/2024</td>
+                                    <td>Perpuluhan Ibu Ratna</td>
+                                    <td>Perpuluhan</td>
+                                    <td class="text-end">Rp 2.000.000</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>15/12/2024</td>
+                                    <td>Persembahan Ibadah Minggu</td>
+                                    <td>Persembahan</td>
+                                    <td class="text-end">Rp 8.800.000</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>15/12/2024</td>
+                                    <td>Persembahan Misi Natal</td>
+                                    <td>Misi</td>
+                                    <td class="text-end">Rp 4.500.000</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>20/12/2024</td>
+                                    <td>Persembahan Pembangunan</td>
+                                    <td>Pembangunan</td>
+                                    <td class="text-end">Rp 6.200.000</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>22/12/2024</td>
+                                    <td>Persembahan Ibadah Minggu</td>
+                                    <td>Persembahan</td>
+                                    <td class="text-end">Rp 7.900.000</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>25/12/2024</td>
+                                    <td>Persembahan Ibadah Natal</td>
+                                    <td>Persembahan</td>
+                                    <td class="text-end">Rp 4.800.000</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="fw-bold">
+                                    <td colspan="4" class="text-end">TOTAL PEMASUKAN</td>
+                                    <td class="text-end text-success">Rp 58.400.000</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    
+                    <!-- Expense Detail -->
+                    <h5 class="mb-3"><i class="fas fa-arrow-down text-danger me-2"></i>Rincian Pengeluaran</h5>
+                    <div class="table-wrapper mb-4">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Tanggal</th>
+                                    <th>Keterangan</th>
+                                    <th>Kategori</th>
+                                    <th class="text-end">Nominal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>01/12/2024</td>
+                                    <td>Pembayaran Listrik</td>
+                                    <td>Utilitas</td>
+                                    <td class="text-end">Rp 2.350.000</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>01/12/2024</td>
+                                    <td>Pembayaran Internet</td>
+                                    <td>Utilitas</td>
+                                    <td class="text-end">Rp 850.000</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>05/12/2024</td>
+                                    <td>Honor Pelayan</td>
+                                    <td>Gaji & Honor</td>
+                                    <td class="text-end">Rp 12.000.000</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>08/12/2024</td>
+                                    <td>Pembelian ATK</td>
+                                    <td>Operasional</td>
+                                    <td class="text-end">Rp 450.000</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>10/12/2024</td>
+                                    <td>Konsumsi Rapat Majelis</td>
+                                    <td>Konsumsi</td>
+                                    <td class="text-end">Rp 750.000</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>12/12/2024</td>
+                                    <td>Perbaikan AC Gereja</td>
+                                    <td>Pemeliharaan</td>
+                                    <td class="text-end">Rp 2.500.000</td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>15/12/2024</td>
+                                    <td>Bantuan Diakonia Keluarga Yanto</td>
+                                    <td>Diakonia</td>
+                                    <td class="text-end">Rp 1.500.000</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>18/12/2024</td>
+                                    <td>Persiapan Dekorasi Natal</td>
+                                    <td>Program</td>
+                                    <td class="text-end">Rp 3.500.000</td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>20/12/2024</td>
+                                    <td>Transportasi Kunjungan</td>
+                                    <td>Transportasi</td>
+                                    <td class="text-end">Rp 800.000</td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td>24/12/2024</td>
+                                    <td>Konsumsi Ibadah Natal</td>
+                                    <td>Konsumsi</td>
+                                    <td class="text-end">Rp 5.000.000</td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td>25/12/2024</td>
+                                    <td>Honor Paduan Suara Natal</td>
+                                    <td>Gaji & Honor</td>
+                                    <td class="text-end">Rp 2.000.000</td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td>28/12/2024</td>
+                                    <td>Pembelian Perlengkapan Kebersihan</td>
+                                    <td>Operasional</td>
+                                    <td class="text-end">Rp 500.000</td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td>30/12/2024</td>
+                                    <td>Bantuan Diakonia Janda</td>
+                                    <td>Diakonia</td>
+                                    <td class="text-end">Rp 2.000.000</td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td>31/12/2024</td>
+                                    <td>Persiapan Ibadah Tahun Baru</td>
+                                    <td>Program</td>
+                                    <td class="text-end">Rp 6.000.000</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="fw-bold">
+                                    <td colspan="4" class="text-end">TOTAL PENGELUARAN</td>
+                                    <td class="text-end text-danger">Rp 40.200.000</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    
+                    <!-- Summary by Category -->
+                    <h5 class="mb-3"><i class="fas fa-chart-pie text-primary me-2"></i>Ringkasan per Kategori</h5>
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                            <h6 class="text-success mb-3">Pemasukan per Kategori</h6>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Kategori</th>
+                                        <th class="text-end">Nominal</th>
+                                        <th class="text-end">%</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Persembahan</td>
+                                        <td class="text-end">Rp 39.200.000</td>
+                                        <td class="text-end">67.1%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Perpuluhan</td>
+                                        <td class="text-end">Rp 3.500.000</td>
+                                        <td class="text-end">6.0%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Syukur</td>
+                                        <td class="text-end">Rp 5.000.000</td>
+                                        <td class="text-end">8.6%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Misi</td>
+                                        <td class="text-end">Rp 4.500.000</td>
+                                        <td class="text-end">7.7%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pembangunan</td>
+                                        <td class="text-end">Rp 6.200.000</td>
+                                        <td class="text-end">10.6%</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="fw-bold">
+                                        <td>Total</td>
+                                        <td class="text-end text-success">Rp 58.400.000</td>
+                                        <td class="text-end">100%</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="text-danger mb-3">Pengeluaran per Kategori</h6>
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Kategori</th>
+                                        <th class="text-end">Nominal</th>
+                                        <th class="text-end">%</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Gaji & Honor</td>
+                                        <td class="text-end">Rp 14.000.000</td>
+                                        <td class="text-end">34.8%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Utilitas</td>
+                                        <td class="text-end">Rp 3.200.000</td>
+                                        <td class="text-end">8.0%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Program</td>
+                                        <td class="text-end">Rp 9.500.000</td>
+                                        <td class="text-end">23.6%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Diakonia</td>
+                                        <td class="text-end">Rp 3.500.000</td>
+                                        <td class="text-end">8.7%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Konsumsi</td>
+                                        <td class="text-end">Rp 5.750.000</td>
+                                        <td class="text-end">14.3%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Lainnya</td>
+                                        <td class="text-end">Rp 4.250.000</td>
+                                        <td class="text-end">10.6%</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="fw-bold">
+                                        <td>Total</td>
+                                        <td class="text-end text-danger">Rp 40.200.000</td>
+                                        <td class="text-end">100%</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Report Footer -->
+                    <div class="report-footer">
+                        <div class="row mt-5">
+                            <div class="col-md-4 text-center">
+                                <p class="mb-5">Dibuat oleh:</p>
+                                <p class="border-top pt-2 d-inline-block" style="min-width: 200px;">
+                                    <strong>Bendahara</strong>
+                                </p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <p class="mb-5">Diperiksa oleh:</p>
+                                <p class="border-top pt-2 d-inline-block" style="min-width: 200px;">
+                                    <strong>Ketua Majelis</strong>
+                                </p>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <p class="mb-5">Disetujui oleh:</p>
+                                <p class="border-top pt-2 d-inline-block" style="min-width: 200px;">
+                                    <strong>Pendeta</strong>
+                                </p>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="text-center text-muted mt-3">
+                            Laporan ini digenerate pada <span class="current-date">1 Desember 2024</span> pukul <span class="current-time">00:00:00</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="../../js/main.js"></script>
+</body>
+</html>
